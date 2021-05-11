@@ -7,7 +7,8 @@ classes back when I took it).
 
 ### Core Components (with feature list)
 #### CLI
-The CLI will implement a variety of commands in order to run the emulator
+The CLI will implement a variety of commands in order to run the emulator.\
+NOTE: All numerical arguments are in hex unless specified otherwise
 ##### Required commands:
 * start -> start CPU (from pc=0)
 * halt -> stop CPU
@@ -15,13 +16,14 @@ The CLI will implement a variety of commands in order to run the emulator
 * load_mem [I/D] (vmh file) -> load either Instruction or Data memory from vmh
 * write_mem [I/D] (vmh file) -> dump I/D memory to vmh
 * set_param (param) (value) -> set config param to value
+* refresh -> use params to generate new instances based on those params (Ex. memory)
 * dump_params -> list all config params (see below list)
 ##### Addl. commands (For debugging etc)
 * set_r [reg] [val] -> assign [reg] to [val]
 * get_r [reg] -> read value from register
-* set_m -[I/D] [addr] [word] -> assign memory address [addr] to [word] (I
+* set_m [I/D] [addr] [word] -> assign memory address [addr] to [word] (I
 corresponds to inst. memory, and d to data)
-* get_m -[I/D] [addr] -> peek at memory address [addr]
+* get_m [I/D] [addr] -> peek at memory address [addr]
 * probably some breakpoints stuff here later on
 ##### Config Params
 

@@ -75,8 +75,8 @@ bool SysMemory::dump_vmh(std::string filename) {
     outfile << std::hex << std::setfill('0') << std::setw(8);
     int last_addr = 0;
     for (int i = 0; i < BYTES_TO_WORDS(highest_addr); ++i){
-        outfile << heap[i] << std::endl;
-        last_addr += 4
+        outfile << heap[i] << "\n";
+        last_addr += 4;
     }
     outfile << "@" << BYTES_TO_WORDS(last_addr) << std::endl;
     outfile.close();

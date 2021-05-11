@@ -5,8 +5,10 @@
  */
 
 #include <iostream>
+#include "cli.h"
 
 int main() {
-    std::cout << "Hello World!";
+    Cli *c = new Cli();
+    while(c->run());
     return 0;
 }

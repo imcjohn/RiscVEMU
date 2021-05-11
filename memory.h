@@ -12,10 +12,9 @@
 #include "utils.h"
 #include "riscv_defs.h"
 
-typedef uint32_t word;
-
 class SysMemory {
-    SysMemory(uint32_t size);
+public:
+    explicit SysMemory(uint32_t size);
     ~SysMemory();
     // cpu calls
     word get(uint32_t addr);
@@ -24,6 +23,7 @@ class SysMemory {
     bool load_vmh(std::string filename);
     bool dump_vmh(std::string filename);
     void resize(uint32_t size);
+private:
     // instance vars
     uint32_t heap_size;
     uint32_t highest_addr; // highest addr written to, for vmh dump
