@@ -14,7 +14,7 @@ NOTE: All numerical arguments are in hex unless specified otherwise
 * halt -> stop CPU
 * status -> print CPU status (004 style)
 * load_mem [I/D] (vmh file) -> load either Instruction or Data memory from vmh
-* write_mem [I/D] (vmh file) -> dump I/D memory to vmh
+* dump_mem [I/D] (vmh file) -> dump I/D memory to vmh
 * set_param (param) (value) -> set config param to value
 * refresh -> use params to generate new instances based on those params (Ex. memory)
 * dump_params -> list all config params (see below list)

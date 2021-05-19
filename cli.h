@@ -5,7 +5,7 @@
 #ifndef RISC_EMU_CLI_H
 #define RISC_EMU_CLI_H
 
-#include "riscv_defs.h"
+#include "rv32i_defs.h"
 #include "memory.h"
 
 class Cli {
@@ -18,7 +18,8 @@ private:
     int data_mem_sz;
     SysMemory *inst_mem;
     SysMemory *data_mem;
-    void decode_cmd(std::string &cmd);
+    bool decode_cmd(std::string &cmd);
+    bool memory_cmds(std::vector<std::string> &cmd_spl);
 };
 
 

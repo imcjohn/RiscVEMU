@@ -8,7 +8,8 @@
 #include "cli.h"
 
 int main() {
-    Cli *c = new Cli();
-    while(c->run());
+
+    Cli *cli = new Cli();
+    while(cli->run());
     return 0;
 }

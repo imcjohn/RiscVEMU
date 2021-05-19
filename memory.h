@@ -10,7 +10,7 @@
 #include <fstream>
 #include <iomanip>      // std::setw
 #include "utils.h"
-#include "riscv_defs.h"
+#include "rv32i_defs.h"
 
 class SysMemory {
 public:

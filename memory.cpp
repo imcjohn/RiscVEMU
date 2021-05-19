@@ -45,21 +45,26 @@ void SysMemory::set(uint32_t addr, word val) {
  * @return true if successful, otherwise false
  */
 bool SysMemory::load_vmh(std::string filename) {
+    std::cout << "Loading file: " << filename << std::endl;
     std::string line;
-    std::ifstream handle(filename);
-    if (!handle.is_open()) return false;
+    std::ifstream fh(filename);
+    if (!fh.is_open())
+        return false;
     int pos = 0;
-    while (getline(handle, line)){
+    while (getline(fh, line)){
+        std::cout << "Got Line: <" << line << ">" << std::endl;
         if (line.empty()) continue;
         if (line[0] == '@'){
             // positioning line, adjust pos accordingly (addrs in VMH are word addresses)
             pos = WORDS_TO_BYTES(load_hex_number(line, 1));
         }
         else{
-            set(pos, load_hex_number(line, 0));
+            word val = load_hex_number(line, 0);
+            set(pos, val);
             pos += 4; // increase by a word
         }
     }
+    std::cout << "Done Loading file: " << filename << std::endl;
     return true;
 }
 
@@ -72,10 +77,9 @@ bool SysMemory::dump_vmh(std::string filename) {
     std::ofstream outfile(filename);
     if (!outfile.is_open()) return false;
     outfile << "@0" << std::endl;
-    outfile << std::hex << std::setfill('0') << std::setw(8);
     int last_addr = 0;
-    for (int i = 0; i < BYTES_TO_WORDS(highest_addr); ++i){
-        outfile << heap[i] << "\n";
+    for (int i = 0; i <= BYTES_TO_WORDS(highest_addr); ++i){
+        outfile << std::hex << std::setfill('0') << std::setw(8) << heap[i] << std::endl;
         last_addr += 4;
     }
     outfile << "@" << BYTES_TO_WORDS(last_addr) << std::endl;
